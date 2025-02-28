@@ -1,0 +1,166 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation",
+        "description": "Documentation for my API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/ReservationProject/public/api/bookings/{id}": {
+            "delete": {
+                "tags": [
+                    "Bookings"
+                ],
+                "operationId": "4ca93ffe9bba2a2e7fe4ca09bb7ccaa4",
+                "responses": {
+                    "200": {
+                        "description": "Resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
+                    }
+                }
+            ]
+        },
+        "/ReservationProject/public/api/bookings": {
+            "post": {
+                "tags": [
+                    "Bookings"
+                ],
+                "operationId": "18e90941a010df26c268f55fc8a78b23",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Booking"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Booking created"
+                    }
+                }
+            }
+        },
+        "/ReservationProject/public/api/resources": {
+            "get": {
+                "tags": [
+                    "Resources"
+                ],
+                "operationId": "bb234af6b1a5d8adb4921d70fcc427e6",
+                "responses": {
+                    "200": {
+                        "description": "List all resources"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Resources"
+                ],
+                "operationId": "cc6230c3c70e88185547d6a13831645c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Resource"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource created"
+                    }
+                }
+            }
+        },
+        "/ReservationProject/public/api/resources/{id}/bookings": {
+            "get": {
+                "tags": [
+                    "Resources"
+                ],
+                "operationId": "f8e1dcf4815be33add89cbb923a467d3",
+                "responses": {
+                    "200": {
+                        "description": "List bookings for resources"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
+                    }
+                }
+            ]
+        }
+    },
+    "components": {
+        "schemas": {
+            "Booking": {
+                "properties": {
+                    "resource_id": {
+                        "type": "integer"
+                    },
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "start_time": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "end_time": {
+                        "type": "string",
+                        "format": "date"
+                    }
+                },
+                "type": "object"
+            },
+            "Resource": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Bookings",
+            "description": "API Endpoints of bookings"
+        },
+        {
+            "name": "Resources",
+            "description": "API Endpoints of resources"
+        }
+    ]
+}

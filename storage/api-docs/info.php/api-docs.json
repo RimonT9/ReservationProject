@@ -1,0 +1,129 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation",
+        "description": "Documentation for my API",
+        "contact": {
+            "name": "Roman",
+            "email": "Timurshinroman123@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/booking/{id}": {
+            "delete": {
+                "tags": [
+                    "Bookings"
+                ],
+                "operationId": "79e7b0569b905d8860511f061f81fff8",
+                "responses": {
+                    "200": {
+                        "description": "Resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
+                    }
+                }
+            ]
+        },
+        "/api/resources": {
+            "get": {
+                "tags": [
+                    "Resources"
+                ],
+                "operationId": "bb234af6b1a5d8adb4921d70fcc427e6",
+                "responses": {
+                    "200": {
+                        "description": "List all resources"
+                    }
+                }
+            }
+        },
+        "/api/resources/{id}/bookings": {
+            "get": {
+                "tags": [
+                    "Bookings"
+                ],
+                "operationId": "be869ea42e5b55e76c10272964e4f547",
+                "responses": {
+                    "200": {
+                        "description": "List bookings for resources"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
+                    }
+                }
+            ]
+        }
+    },
+    "components": {
+        "schemas": {
+            "Booking": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "resource_id": {
+                        "type": "integer"
+                    },
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "start_time": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "end_time": {
+                        "type": "string",
+                        "format": "date"
+                    }
+                },
+                "type": "object"
+            },
+            "Resource": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Bookings",
+            "description": "Bookings"
+        },
+        {
+            "name": "Resources",
+            "description": "Resources"
+        }
+    ]
+}
